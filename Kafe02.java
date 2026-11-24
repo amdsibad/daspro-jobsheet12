@@ -23,16 +23,24 @@ import java.util.Scanner;
         System.out.println("Silakan pilih menu yang Anda inginkan.");
     }
 
+    public static int hitungTotalHarga02(int pilihanMenu, int banyakItem) {
+        int[] hargaItems = {15000, 20000, 22000, 12000, 10000, 18000};
+
+        int hargaTotal = hargaItems[pilihanMenu - 1] * banyakItem;
+        return hargaTotal;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        Menu("Andi", true, 15);
 
-        System.out.print("Nama pelanggan    : ");
-        String namaPelanggan = sc.nextLine();
-        System.out.print("Member? (y/n)     : ");
-        boolean isMember = sc.nextLine().trim().equalsIgnoreCase("y");
-        System.out.print("Jam kunjung (0-23): ");
-        int jamKunjung = Integer.parseInt(sc.nextLine().trim());
+        System.out.print("\nMasukkan nomor menu yang ingin anda pesan: ");
+        int pilihanMenu = sc.nextInt();
+        System.out.print("Masukkan jumlah item yang ingin dipesan: ");
+        int banyakItem = sc.nextInt();
+        
+        int totalBayar = hitungTotalHarga02(pilihanMenu, banyakItem);
 
-        Menu(namaPelanggan, isMember, jamKunjung);
+        System.out.println("Total harga untuk pesanan Anda: Rp." + totalBayar);
     }
 }
